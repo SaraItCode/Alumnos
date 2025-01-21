@@ -5,7 +5,7 @@ document.getElementById('add-alumno-form').addEventListener('submit', async (e) 
       id: Date.now(), // Genera el id en funcion de la hora actual
       name: formData.get('name'),
       photo: formData.get('photo').name, // Enviar nombre del archivo para simplificar
-      details: formData.get('details'),
+      description: formData.get('details'),
     };
   
     await fetch('/api/new', {

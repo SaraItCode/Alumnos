@@ -27,6 +27,6 @@
     "id": 1737024316029,
     "name": "Maria",
     "photo": "./images/spiderman.png",
-    "details": "Usuario introducido con el formulario"
+    "description": "Usuario introducido con el formulario"
   }
 ]

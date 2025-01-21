@@ -7,18 +7,24 @@
 
 body {
   font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
   background-color: #f3f4f6;
   color: #333;
 }
 
 header {
-  background-color: #007acc;
-  color: white;
+  background-color: #333;
+  color: #fff;
   padding: 1rem;
   text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 header h1 {
+  margin: 0;
   margin-bottom: 0.5rem;
 }
 
@@ -34,9 +40,9 @@ nav a:hover {
 }
 
 main {
-  max-width: 800px;
+  max-width: 90%;
   margin: 2rem auto;
-  padding: 1rem;
+  padding: 0.5rem;
   background: white;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -70,6 +76,6 @@ footer {
   text-align: center;
   padding: 1rem;
   margin-top: 2rem;
-  background: #007acc;
+  background: #333;
   color: white;
 }

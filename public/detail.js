@@ -23,7 +23,7 @@ async function cargarDetalleAlumno() {
     const alumnos = await response.json();
 
     // Buscar el alumno por ID
-    const alumno = alumnos.find((al) => al.id === id);
+    const alumno = alumnos.find((al) => al.id == id);
 
     if (!alumno) {
       detalleContainer.innerHTML = '<p>Error: Alumno no encontrado.</p>';
@@ -32,7 +32,7 @@ async function cargarDetalleAlumno() {
 
     // Renderizar los detalles del alumno
     detalleContainer.innerHTML = `
-      <img src="${alumno.foto}" alt="Foto de ${alumno.name}">
+      <img src="${alumno.photo}" alt="Foto de ${alumno.name}">
       <h2>${alumno.name}</h2>
       <p><strong>Edad:</strong> ${alumno.age}</p>
       <p><strong>Email:</strong> ${alumno.email}</p>

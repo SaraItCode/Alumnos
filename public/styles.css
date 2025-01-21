@@ -1,14 +1,21 @@
 /* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f3f4f6;
+    color: #333;
 }
 
 header {
     background-color: #333;
     color: #fff;
-    padding: 20px;
+    padding: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -16,6 +23,18 @@ header {
 
 header h1 {
     margin: 0;
+    margin-bottom: 0.5rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: bold;
+  }
+  
+nav a:hover {
+    text-decoration: underline;
 }
 
 #cartIcon {
@@ -38,27 +57,39 @@ header h1 {
     padding: 5px;
 }
 
-#list {
+main {
+    max-width: 90%;
+    margin: 2rem auto;
+    padding: 0.2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#alumnos-list {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     padding: 20px;
+    align-content: center;
+    justify-content: center;
 }
 
-/*.disco {
+.alumno-card {
     border: 1px solid #ccc;
     padding: 10px;
     width: 200px;
+    justify-items: center;
 }
-*/
-.disco button {
+
+.alumno-card button {
     background-color: #333;
     color: #fff;
     padding: 5px 10px;
     border: none;
     cursor: pointer;
 }
-.disco button:hover {
+.alumno-card button:hover {
     background-color: #15953e;
     color: #1f221f;
     padding: 5px 8px;
@@ -66,7 +97,11 @@ header h1 {
     cursor: pointer;
     font-weight: bolder;
 }
-
+.alumno-card a {
+    color:coral;
+    text-decoration-line: blink;
+    font-size: 2em;;
+}
 #cart {
     position: fixed;
     top: 50px;
@@ -124,3 +159,18 @@ table, th, td {
 .add_detail {
     margin-left: 100px;
 }
+
+.image_profile {
+    width: auto;
+    height: 200px;
+    border-radius: 50px;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+    background: #333;
+    color: white;
+}
+  
