@@ -1,4 +1,7 @@
-/* General Reset */
+:root {
+  --primary-color: #333;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -14,7 +17,7 @@ body {
 }
 
 header {
-  background-color: #333;
+  background-color: var(--primary-color);
   color: #fff;
   padding: 1rem;
   text-align: center;
@@ -76,6 +79,6 @@ footer {
   text-align: center;
   padding: 1rem;
   margin-top: 2rem;
-  background: #333;
+  background: var(--primary-color);
   color: white;
 }
