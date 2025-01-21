@@ -1,24 +1,32 @@
 [
   {
-    "id": "1",
+    "id": 1,
     "name": "Juan Pérez",
     "age": 20,
     "email": "juan.perez@example.com",
-    "photo": "https://via.placeholder.com/150",
+    "photo": "./images/ironman.png",
     "description": "Estudiante de Ingeniería."
   },
   {
-    "id": "2",
+    "id": 2,
     "name": "Ana López",
     "age": 22,
     "email": "ana.lopez@example.com",
-    "photo": "https://via.placeholder.com/150",
+    "photo": "./images/scarlet_witch.png",
     "description": "Estudiante de Medicina."
+  },
+  {
+    "id": 3,
+    "name": "Mikel Gutierrez",
+    "age": 32,
+    "email": "mikel.gutierrez@example.com",
+    "photo": "./images/thor.png",
+    "description": "Estudiante de Pociones mágicas."
   },
   {
     "id": 1737024316029,
     "name": "Maria",
-    "photo": "justificante.jpeg",
-    "details": "dsfdsfad dsfadsf"
+    "photo": "./images/spiderman.png",
+    "details": "Usuario introducido con el formulario"
   }
 ]
