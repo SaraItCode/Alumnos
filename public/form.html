@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listado de Alumnos</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Añadir un nuevo alumno</h1>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="asistencia.html">Asistencia</a>
+      <a href="form.html">Añadir Alumno</a>
+    </nav>
+  </header>
+    <form id="add-alumno-form">
+      <label for="name">Nombre:</label>
+      <input type="text" id="name" name="name" required>
+      
+      <label for="photo">Foto:</label>
+      <input type="file" id="photo" name="photo" accept="image/*" required>
+      
+      <label for="details">Detalles:</label>
+      <textarea id="details" name="details" required></textarea>
+      
+      <button type="submit">Añadir Alumno</button>
+    </form>
+    <script src="add_alumno.js" type="module"></script>
+    
+  </body>
+</html>

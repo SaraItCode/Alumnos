@@ -1,0 +1,126 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+#cartIcon {
+    position: relative;
+}
+
+#cartIcon img {
+    width: 30px;
+    height: auto;
+    cursor: pointer;
+}
+
+#cartItemCount {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+#list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+/*.disco {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 200px;
+}
+*/
+.disco button {
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+.disco button:hover {
+    background-color: #15953e;
+    color: #1f221f;
+    padding: 5px 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+#cart {
+    position: fixed;
+    top: 50px;
+    right: 20px;
+    width: 400px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 20px;
+    /*display: flow-root;none;*/
+}
+
+.hidden {
+    display: none;
+}
+
+#cartItems {
+    margin-bottom: 10px;
+}
+
+#cartItems p {
+    margin: 0;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+#cartItems button {
+    margin-right: 5px;
+    
+}
+
+h1 {
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+table {
+    border-collapse: collapse;
+}
+table, th, td {
+    border: none;
+}
+
+.info {
+    margin-left: 70px;
+}
+
+.add_detail {
+    margin-left: 100px;
+}
