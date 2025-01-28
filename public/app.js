@@ -24,7 +24,7 @@ async function cargarAlumnos() {
     console.log(alumno.id);
     console.log((alumno.id));
     alumnoCard.innerHTML = `
-      <img class="image_profile" src="${alumno.photo}" alt="${alumno.name}">
+      <img class="image_profile" src="${alumno.profilePic}" alt="${alumno.name}">
       <h2>${alumno.name}</h2>
       <a href="detail.html?id=${alumno.id}">Ver Detalle</a>
       <button id="asistencia-${alumno.id}">Marcar Asistencia</button>
@@ -52,7 +52,7 @@ async function cargarAsistencia() {
     .map(
       (alumno) => `
         <div class="asistencia-card">
-          <img src="${alumno.photo}" alt="${alumno.name}">
+          <img src="${alumno.profilePic}" alt="${alumno.name}">
           <h2>${alumno.name}</h2>
           <button onclick="eliminarDeAsistencia(${alumno.id})">Eliminar</button>
         </div>

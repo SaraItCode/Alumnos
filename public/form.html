@@ -15,19 +15,25 @@
       <a href="form.html">Añadir Alumno</a>
     </nav>
   </header>
-    <form id="add-alumno-form">
-      <label for="name">Nombre:</label>
+    <form id="add-alumno-form" action="/upload" method="POST" enctype="multipart/form-data">
+      <label for="name">Name:</label>
       <input type="text" id="name" name="name" required>
+
+      <label for="age">Age:</label>
+      <input type="text" id="age" name="age" required>
+
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="email" required>
       
-      <label for="photo">Foto:</label>
-      <input type="file" id="photo" name="photo" accept="image/*" required>
+      <label for="profilePic">Foto:</label>
+      <input type="file" id="profilePic" name="profilePic" accept="image/*" required>
       
-      <label for="details">Detalles:</label>
-      <textarea id="details" name="details" required></textarea>
-      
+      <!-- <label for="details">Description:</label>
+      <textarea id="details" name="description" required></textarea>
+       -->
       <button type="submit">Añadir Alumno</button>
     </form>
-    <script src="add_alumno.js" type="module"></script>
+    <!-- <script src="add_alumno.js" type="module"></script> -->
     
   </body>
 </html>

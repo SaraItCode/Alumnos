@@ -4,11 +4,13 @@ document.getElementById('add-alumno-form').addEventListener('submit', async (e) 
     const newAlumno = {
       id: Date.now(), // Genera el id en funcion de la hora actual
       name: formData.get('name'),
-      photo: formData.get('photo').name, // Enviar nombre del archivo para simplificar
-      description: formData.get('details'),
+      age: formData.get('age'),
+      email: formData.get('email'),
+      photo: "/uploads/"+formData.get('photo').name, // Enviar nombre del archivo para simplificar
+      description: formData.get('description'),
     };
-  
-    await fetch('/api/new', {
+  console.log(newAlumno)
+    await fetch('/upload', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newAlumno),

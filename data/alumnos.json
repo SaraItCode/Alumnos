@@ -4,7 +4,7 @@
     "name": "Juan Pérez",
     "age": 20,
     "email": "juan.perez@example.com",
-    "photo": "./images/ironman.png",
+    "profilePic": "./uploads/ironman.png",
     "description": "Estudiante de Ingeniería."
   },
   {
@@ -12,7 +12,7 @@
     "name": "Ana López",
     "age": 22,
     "email": "ana.lopez@example.com",
-    "photo": "./images/scarlet_witch.png",
+    "profilePic": "./uploads/scarlet_witch.png",
     "description": "Estudiante de Medicina."
   },
   {
@@ -20,13 +20,44 @@
     "name": "Mikel Gutierrez",
     "age": 32,
     "email": "mikel.gutierrez@example.com",
-    "photo": "./images/thor.png",
+    "profilePic": "./uploads/thor.png",
     "description": "Estudiante de Pociones mágicas."
   },
   {
     "id": 1737024316029,
     "name": "Maria",
-    "photo": "./images/spiderman.png",
+    "profilePic": "./uploads/spiderman.png",
     "description": "Usuario introducido con el formulario"
+  },
+  {
+    "id": 1737546043167,
+    "name": "efa",
+    "age": "ewr",
+    "email": "s.ortegamunoz@gmail.com",
+    "profilePic": "/uploads/1737549675349-31895023.png"
+  },
+  {
+    "name": "Nuevo",
+    "age": "34",
+    "email": "s.ortegamunoz@gmail.com",
+    "profilePic": "./uploads/1737551274692-755811782.png"
+  },
+  {
+    "name": "efa",
+    "age": "23",
+    "email": "dsfdsfs.ortegamunoz@gmail.com",
+    "profilePic": "./uploads/1737551563806-348668578.png"
+  },
+  {
+    "name": "ef",
+    "age": "23",
+    "email": "s.ortegamunoz@gmail.com",
+    "profilePic": "./uploads/1737551860157-61402401.jpg"
+  },
+  {
+    "name": "fdsa",
+    "age": "23",
+    "email": "s.ortega@gmail.com",
+    "profilePic": "./uploads/1737631135454-918975859.png"
   }
 ]
