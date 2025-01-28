@@ -61,12 +61,12 @@ main {
 .detalle-container img {
   max-width: 200px;
   border-radius: 50%;
-  border: 4px solid #007acc;
+  border: 4px solid #702C55;
 }
 
 .detalle-container h2 {
   font-size: 1.8rem;
-  color: #007acc;
+  color: #702C55;
 }
 
 .detalle-container p {

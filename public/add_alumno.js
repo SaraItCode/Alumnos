@@ -1,21 +1,43 @@
 document.getElementById('add-alumno-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const newAlumno = {
-      id: Date.now(), // Genera el id en funcion de la hora actual
-      name: formData.get('name'),
-      age: formData.get('age'),
-      email: formData.get('email'),
-      photo: "/uploads/"+formData.get('photo').name, // Enviar nombre del archivo para simplificar
-      description: formData.get('description'),
-    };
-  console.log(newAlumno)
-    await fetch('/upload', {
+  e.preventDefault();
+
+  // Crea el FormData a partir del formulario
+  const formData = new FormData(e.target);
+
+  try {
+    const response = await fetch('/upload', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newAlumno),
+      body: formData // Envía el FormData directamente
     });
-  
-    //cargarAlumnos();
-    e.target.reset();
-  });
+
+    if (response.ok) {
+      document.getElementById('mensaje').textContent = 'Alumno añadido correctamente.';
+      setTimeout(() => {
+        window.location.href = 'index.html'; // Redirige al listado de alumnos.
+      }, 2000);
+    } else {
+      const error = await response.text();
+      document.getElementById('mensaje').textContent = `Error al añadir el alumno: ${error}`;
+    }
+  } catch (err) {
+    document.getElementById('mensaje').textContent = `Error de conexión: ${err.message}`;
+  }
+});
+
+document.getElementById("photo").addEventListener("change", function(event) {
+  var photoFile = event.target.files[0];
+
+  if (photoFile) {
+      var reader = new FileReader();
+      reader.onload = function(event) {
+          var photoDataUrl = event.target.result;
+          var preview = document.getElementById("preview");
+
+          preview.src = photoDataUrl; // Asigna la foto a la vista previa
+          preview.style.display = "block"; // Muestra la vista previa
+      };
+      reader.readAsDataURL(photoFile); // Convierte la foto a Base64 para previsualización
+  } else {
+      document.getElementById("preview").style.display = "none"; // Oculta la vista previa si no hay foto
+  }
+});

@@ -57,71 +57,40 @@ const upload = multer({
   }
 });
 
-// Ruta para manejar la subida de archivos y guardar datos en un archivo JSON
+// Ruta para subir alumno (multipart/form-data)
 app.post('/upload', upload.single('profilePic'), (req, res) => {
-  if (!req.file) {
-    return res.status(400).send('No se subió ningún archivo.');
-  }
-  
-  // Extraer datos del formulario
   const { name, age, email } = req.body;
-  const profilePic = `./uploads/${req.file.filename}`;
 
-  // Crear un objeto con los datos del usuario
-  const newUser = { name, age, email, profilePic };
+  if (!req.file) {
+    return res.status(400).send('No se ha subido ninguna foto.');
+  }
 
-  // Ruta del archivo JSON
-  //const jsonFilePath = path.join(__dirname, 'alumnos.json'); -----REVISAR
+  // Crea un nuevo alumno
+  const newAlumno = {
+    id: Date.now(),
+    name,
+    age,
+    email,
+    photo: `/uploads/${req.file.filename}`
+  };
 
-  // Leer y actualizar el archivo JSON
-  fs.readFile('data/alumnos.json', 'utf-8', (err, data) => {
-    if (err && err.code !== 'ENOENT') {
-      return res.status(500).send('Error al leer el archivo JSON.');
-    }
+  // Guarda la información en un archivo JSON
+  const filePath = './data/alumnos.json';
+  const alumnos = fs.existsSync(filePath)
+    ? JSON.parse(fs.readFileSync(filePath))
+    : [];
+  alumnos.push(newAlumno);
+  fs.writeFileSync(filePath, JSON.stringify(alumnos, null, 2));
 
-    const users = data ? JSON.parse(data) : []; // Si el archivo no existe, inicializar con un array vacío
-    users.push(newUser);
-
-    // Guardar los datos actualizados
-    fs.writeFile('data/alumnos.json', JSON.stringify(users, null, 2), (err) => {
-      if (err) {
-        return res.status(500).send('Error al guardar los datos en el archivo JSON.');
-      }
-
-      // Responder con los datos del usuario
-      res.send(`
-        <h1>Datos guardados con éxito</h1>
-        <p>Nombre: ${name}</p>
-        <p>Age: ${age}</p>
-        <p>Correo Electrónico: ${email}</p>
-        <p>Foto:</p>
-        <img src="/uploads/${profilePic}" alt="Foto de perfil" style="max-width: 200px;">
-      `);
-      // Redirigir a lal pagina de inicio ---- REVISAR
-      //res.redirect(`/?name=${name}&email=${email}&profilePic=${req.file.filename}`);
-    });
-  });
+  res.status(200).send('Alumno añadido correctamente.');
 });
-
-// // Ruta para manejar la subida de archivos
-// app.post('/upload', upload.single('profilePic'), (req, res) => {
-//   if (!req.file) {
-//     return res.status(400).send('No se subió ningún archivo.');
-//   }
-
-//   res.send(`
-//     <h1>Foto subida con éxito</h1>
-//     <p>Nombre del archivo: ${req.file.filename}</p>
-//     <img src="/uploads/${req.file.filename}" alt="Foto de perfil" style="max-width: 200px;">
-//   `);
-// });
 
 // Servir archivos subidos
 app.use('/uploads', express.static('uploads'));
 
 // Leer el JSON
 app.get('/api/alumnos', (req, res) => {
-  fs.readFile('data/alumnods.json', 'utf-8', (err, data) => {
+  fs.readFile('data/alumnos.json', 'utf-8', (err, data) => {
     if (err) return res.status(500).send('Error leyendo el archivo');
     res.send(JSON.parse(data));
   });
@@ -135,20 +104,6 @@ app.get('/api/detail', (req, res) => {
     });
 });
 
-// // Añadir un nuevo alumno
-// app.post('/api/new', (req, res) => {
-//   const newAlumno = req.body;
-//   fs.readFile('data/alumnos.json', 'utf-8', (err, data) => {
-//     if (err) return res.status(500).send('Error leyendo el archivo');
-//     const alumnos = JSON.parse(data);
-//     alumnos.push(newAlumno);
-//     fs.writeFile('data/alumnos.json', JSON.stringify(alumnos, null, 2), (err) => {
-//       if (err) return res.status(500).send('Error escribiendo el archivo');
-//       res.send({ message: 'Alumno añadido' });
-//     });
-//   });
-// });
-
 // Ruta para servir el index
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
@@ -161,10 +116,3 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(port, () => console.log('Servidor corriendo en http://localhost:3000'));
-
-
-
-
-
-
-
