@@ -58,8 +58,8 @@ const upload = multer({
 });
 
 // Ruta para subir alumno (multipart/form-data)
-app.post('/upload', upload.single('profilePic'), (req, res) => {
-  const { name, age, email } = req.body;
+app.post('/upload', upload.single('photo'), (req, res) => {
+  const { name, age, email, description } = req.body;
 
   if (!req.file) {
     return res.status(400).send('No se ha subido ninguna foto.');
@@ -71,7 +71,8 @@ app.post('/upload', upload.single('profilePic'), (req, res) => {
     name,
     age,
     email,
-    photo: `/uploads/${req.file.filename}`
+    photo: `/uploads/${req.file.filename}`,
+    description
   };
 
   // Guarda la información en un archivo JSON
