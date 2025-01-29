@@ -42,5 +42,13 @@
     "age": "78",
     "email": "s.ortegamunoz@gmail.com",
     "photo": "/uploads/1738090935157-284303940.png"
+  },
+  {
+    "id": 1738143342590,
+    "name": "Capitana America",
+    "age": "31",
+    "email": "CapitanaAmerica@web.com",
+    "photo": "/uploads/1738143338022-749375823.png",
+    "description": "Superfuerza y superbvelocidad"
   }
 ]

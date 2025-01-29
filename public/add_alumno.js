@@ -1,15 +1,12 @@
 document.getElementById('add-alumno-form').addEventListener('submit', async (e) => {
   e.preventDefault();
-
   // Crea el FormData a partir del formulario
   const formData = new FormData(e.target);
-
   try {
     const response = await fetch('/upload', {
       method: 'POST',
       body: formData // Envía el FormData directamente
     });
-
     if (response.ok) {
       document.getElementById('mensaje').textContent = 'Alumno añadido correctamente.';
       setTimeout(() => {

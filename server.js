@@ -57,8 +57,31 @@ const upload = multer({
   }
 });
 
+//Formulario normal
+app.post('/upload_datos', (req, res) => {
+  const { name, age, email, details } = req.body;
+  // Crea un nuevo alumno
+  const newAlumno = {
+    id: Date.now(),
+    name,
+    age,
+    email,
+    details
+  };
+  // Guarda la información en un archivo JSON
+  const filePath = './data/usuarios.json';
+  const alumnos = fs.existsSync(filePath)
+    ? JSON.parse(fs.readFileSync(filePath))
+    : [];
+  alumnos.push(newAlumno);
+  fs.writeFileSync(filePath, JSON.stringify(alumnos, null, 2));
+
+  res.status(200).send('Alumno añadido correctamente.');
+})
+
 // Ruta para subir alumno (multipart/form-data)
 app.post('/upload', upload.single('photo'), (req, res) => {
+ 
   const { name, age, email, description } = req.body;
 
   if (!req.file) {
@@ -116,4 +139,4 @@ app.use((err, req, res, next) => {
   res.status(500).send(err.message);
 });
 
-app.listen(port, () => console.log('Servidor corriendo en http://localhost:3000'));
+app.listen(port, () => console.log(`Servidor corriendo en http://localhost:${port}`));
