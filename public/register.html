@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Listado de Alumnos</h1>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="asistencia.html">Asistencia</a>
+            <a href="form.html">Añadir Alumno</a>
+            <a href="login.html">Acceso</a>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Registro</h1>
+        <form id="registerForm">
+            <input type="text" name="name" placeholder="Nombre" required>
+            <input type="text" name="username" placeholder="Nombre de usuario" required>
+            <input type="email" name="email" placeholder="Correo electrónico" required>
+            <input type="password" name="password" placeholder="Contraseña" required>
+            <button type="submit">Registrarse</button>
+        </form>
+        <p>¿Ya tienes cuenta? <a href="/login.html">Inicia sesión</a></p>
+    </div>
+    <script src="script_login.js"></script>
+</body>
+</html>
