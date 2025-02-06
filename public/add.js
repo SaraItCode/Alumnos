@@ -2,10 +2,11 @@ document.getElementById('add-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     // Crea el FormData a partir del formulario
     const formData = new FormData(e.target);
-    const name = formData.get('name');
+    const name = clean_data(formData.get('name'));
     const age = formData.get('age');
     const email = formData.get('email');
     const details = formData.get('details');
+
   try {
 
     const response = await fetch('/upload_datos', {
@@ -26,3 +27,7 @@ document.getElementById('add-form').addEventListener('submit', async (e) => {
     document.getElementById('mensaje').textContent = `Error de conexión: ${err.message}`;
   }
 });
+
+function clean_data(valor){
+    return valor.trim();
+}

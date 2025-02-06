@@ -13,6 +13,20 @@
       <a href="index.html">Inicio</a>
       <a href="asistencia.html">Asistencia</a>
       <a href="form.html">Añadir Alumno</a>
+      <div class="container">
+        <!-- Elementos para usuarios NO autenticados -->
+        <div id="noAuth">
+          <a href="/login.html">Iniciar sesión</a>
+          <a href="/register.html">Registrarse</a>
+        </div>
+    
+        <!-- Elementos para usuarios autenticados -->
+        <div id="auth">
+          <p>Bienvenido, <span id="username"></span>!</p>
+          <button onclick="logout()">Cerrar sesión</button>
+        </div>
+      </div>
+     
     </nav>
   </header>
   <main id="alumnos-list"></main>

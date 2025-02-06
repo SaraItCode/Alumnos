@@ -1,3 +1,32 @@
+// Verificar si el usuario está autenticado al cargar la página
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const response = await fetch('/api/perfil');
+    const userData = await response.json();
+
+    if (userData.username) {
+      document.getElementById('noAuth').style.display = 'none';
+      document.getElementById('auth').style.display = 'block';
+      document.getElementById('username').textContent = userData.username;
+    } else {
+      document.getElementById('noAuth').style.display = 'block';
+      document.getElementById('auth').style.display = 'none';
+    }
+  } catch (error) {
+    console.error('Error al verificar autenticación:', error);
+  }
+});
+
+// Función para cerrar sesión
+async function logout() {
+  try {
+    const response = await fetch('/api/logout', { method: 'POST' });
+    if (response.ok) window.location.href = '/';
+  } catch (error) {
+    alert('Error al cerrar sesión');
+  }
+}
+
 //import alumnos from './api/alumnos.json' assert { type: 'json' };
 const alumnosList = document.getElementById('alumnos-list');
 
@@ -24,11 +53,15 @@ async function cargarAlumnos() {
     console.log(alumno.id);
     console.log((alumno.id));
     alumnoCard.innerHTML = `
-      <img class="image_profile" src="${alumno.photo}" alt="${alumno.name}">
+      <img class="image_profile" src="${alumno.photo}" alt="${alumno.name}" loading="lazy">
       <h2>${alumno.name}</h2>
       <a href="detail.html?id=${alumno.id}">Ver Detalle</a>
       <button id="asistencia-${alumno.id}">Marcar Asistencia</button>
     `;
+    // // Redirigir a detalle.html con el ID del alumno
+    // tarjeta.addEventListener('click', () => {
+    //   window.location.href = `detalle.html?id=${alumno.id}`;
+    // });
      // <button onclick="verDetalle(${alumno.id})">Ver Detalle</button>
     alumnosList.appendChild(alumnoCard);
     console.log(alumnoCard)
