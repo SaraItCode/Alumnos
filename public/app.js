@@ -26,7 +26,8 @@ async function logout() {
     alert('Error al cerrar sesión');
   }
 }
-
+// Asegurarme que la funcion logout esta definida
+window.logout = logout;
 //import alumnos from './api/alumnos.json' assert { type: 'json' };
 const alumnosList = document.getElementById('alumnos-list');
 
@@ -50,8 +51,6 @@ async function cargarAlumnos() {
   alumnos.forEach((alumno) => {
     const alumnoCard = document.createElement('div');
     alumnoCard.classList.add('alumno-card');
-    console.log(alumno.id);
-    console.log((alumno.id));
     alumnoCard.innerHTML = `
       <img class="image_profile" src="${alumno.photo}" alt="${alumno.name}" loading="lazy">
       <h2>${alumno.name}</h2>
@@ -64,7 +63,6 @@ async function cargarAlumnos() {
     // });
      // <button onclick="verDetalle(${alumno.id})">Ver Detalle</button>
     alumnosList.appendChild(alumnoCard);
-    console.log(alumnoCard)
     // Asignar evento al botón
     const boton = document.getElementById(`asistencia-${alumno.id}`);
     boton.addEventListener("click", () => marcarAsistencia(alumno.id));
