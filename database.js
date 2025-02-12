@@ -23,7 +23,14 @@ db.serialize(() => {
     )
   `);
   db.run(`
-    UPDATE users set isAdmin=1 where email="s.ortegamunoz@gmail.com"
+    INSERT OR IGNORE INTO users (name, username, email, password, isAdmin)
+    VALUES (
+      'sara',
+      'sortega',
+      's.ortegamunoz@gmail.com',
+      '$2b$10$7.rM61Wvgn.Mp2XrCfQglOxcCWZ3EG04.iIV7Dd8ndsHFa43sEwi2',
+      1
+    )
   `);
   db.run(`
     CREATE TABLE IF NOT EXISTS messages (
