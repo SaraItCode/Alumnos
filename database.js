@@ -23,7 +23,7 @@ db.serialize(() => {
     )
   `);
   db.run(`
-    UPDATE TABLE users set isAdmin=1 where email="s.ortegamunoz@gmail.com"
+    UPDATE users set isAdmin=1 where email="s.ortegamunoz@gmail.com"
   `);
   db.run(`
     CREATE TABLE IF NOT EXISTS messages (
