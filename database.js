@@ -11,7 +11,7 @@ db.serialize(() => {
   )`);
   // Crear tabla de usuarios
   db.run(`
-    CREATE TABLE IF users (
+    CREATE TABLE users (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT NOT NULL,
       username TEXT UNIQUE NOT NULL,
