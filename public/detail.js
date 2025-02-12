@@ -11,11 +11,6 @@ async function cargarDetalleAlumno() {
     window.location.href = '/alumnos';
     return;
   }
- 
-  // if (!id) {
-  //   detalleContainer.innerHTML = '<p>Error: No se proporcionó un ID de alumno.</p>';
-  //   return;
-  // }
 
   try {
     // Obtener los datos de los alumnos desde el JSON

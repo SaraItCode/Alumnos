@@ -18,7 +18,8 @@ db.serialize(() => {
       email TEXT UNIQUE NOT NULL,
       password TEXT NOT NULL,
       created_date DEFAULT CURRENT_TIMESTAMP,
-      last_login_date DEFAULT CURRENT_TIMESTAMP 
+      last_login_date DEFAULT CURRENT_TIMESTAMP,
+      isAdmin BOOLEAN DEFAULT 0
     )
   `);
   db.run(`

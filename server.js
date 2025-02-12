@@ -75,13 +75,31 @@ const upload = multer({
   }
 });
 
+// Middleware para verificar si el usuario es administrador
+const isAdmin = (req, res, next) => {
+  if (req.session.user && req.session.user.isAdmin) {
+    next();
+  } else {
+    res.status(403).send('Acceso denegado');
+  }
+};
+
 // ENDPOINTS //
 // Ruta para servir el index
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Sabetr quien es el usuario que se ha logeado
+// Endpoint para obtener todos los usuarios (solo admin)
+app.get('/api/admin/usuarios', isAdmin, (req, res) => {
+  db.all('SELECT id, username, email, created_date, last_login_date FROM users', (err, rows) => {
+    if (err) res.status(500).json({ error: err.message }); 
+    else res.json(rows);
+  });
+  //db.close();
+});
+
+// Saber quien es el usuario que se ha logeado
 app.get('/api/perfil', (req, res) => {
   if (req.session.user) {
     res.json(req.session.user);
@@ -178,13 +196,6 @@ app.get('/api/alumnos', (req, res) => {
   });
 });
 
-// // Detail alumno
-// app.get('/api/detail', (req, res) => {
-//     fs.readFile('data/alumnos.json', 'utf-8', (err, data) => {
-//       if (err) return res.status(500).send('Error leyendo el archivo');
-//       res.send(JSON.parse(data));
-//     });
-// });
 // Obtener detalle de un alumno por ID
 app.get('/api/alumnos/:id', (req, res) => {
   const id = req.params.id;
@@ -271,7 +282,8 @@ app.post('/api/login', async (req, res) => {
     req.session.user = {
       id: user.id,
       username: user.username,
-      email: user.email
+      email: user.email,
+      isAdmin: user.isAdmin
     };
     res.status(200).json({ success: true });
   });
