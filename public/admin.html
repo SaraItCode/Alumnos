@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Panel de Administración</title>
+  <style>
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        padding: 12px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f4f4f4;
+    }
+
+    button {
+        padding: 10px 20px;
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Usuarios Registrados</h1>
+    <button onclick="logout()">Cerrar sesión</button>
+    <div id="usuarios"></div>
+  </div>
+  <script>
+    // Cargar usuarios al iniciar
+    async function cargarUsuarios() {
+      try {
+        const response = await fetch('/api/admin/usuarios');
+        if (!response.ok) throw new Error('No autorizado');
+        
+        const usuarios = await response.json();
+        const contenedor = document.getElementById('usuarios');
+        
+        contenedor.innerHTML = `
+          <table>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Fecha de Registro</th>
+              <th>Fecha Ultimo login</th>
+            </tr>
+            ${usuarios.map(user => `
+              <tr>
+                <td>${user.id}</td>
+                <td>${user.username}</td>
+                <td>${user.email}</td>
+                <td>${new Date(user.created_date).toLocaleDateString()}</td>
+                <td>${new Date(user.last_login_date).toLocaleDateString()}</td>
+              </tr>
+            `).join('')}
+          </table>
+        `;
+      } catch (error) {
+        alert(error.message);
+        window.location.href = '/login.html';
+      }
+    }
+
+    // Cerrar sesión
+    async function logout() {
+      await fetch('/api/logout', { method: 'POST' });
+      window.location.href = '/login.html';
+    }
+
+    // Iniciar carga
+    cargarUsuarios();
+  </script>
+</body>
+</html>
