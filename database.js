@@ -11,7 +11,7 @@ db.serialize(() => {
   )`);
   // Crear tabla de usuarios
   db.run(`
-    CREATE TABLE users (
+    CREATE TABLE IF NOT EXISTS users (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT NOT NULL,
       username TEXT UNIQUE NOT NULL,
@@ -21,6 +21,9 @@ db.serialize(() => {
       last_login_date DEFAULT CURRENT_TIMESTAMP,
       isAdmin BOOLEAN DEFAULT 0
     )
+  `);
+  db.run(`
+    UPDATE TABLE users set isAdmin=1 where email="s.ortegamunoz@gmail.com"
   `);
   db.run(`
     CREATE TABLE IF NOT EXISTS messages (
